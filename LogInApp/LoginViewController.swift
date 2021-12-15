@@ -40,8 +40,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func correctInput() {
-        if (enterName.text != correctName &&
+        if (enterName.text != correctName ||
             enterPassword.text != correctPassword) {
+            guard let inputName = enterName.text, !inputName.isEmpty else {
+            showAlert(title: "Wrong input", message: "Please, enter your name")
+                return
+                }
+            guard let inputPassword = enterPassword.text, !inputPassword.isEmpty else {
+            showAlert(title: "Wrong input", message: "Please, enter your password")
+                return
+                }
             showAlert(title: "Wrong input", message: "Try again!")
             return }
         else {
