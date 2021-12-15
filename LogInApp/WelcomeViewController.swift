@@ -15,16 +15,5 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         helloLabel.text = "Hello, " + rightName
-
     }
-    
-
-    @IBAction func unwind( _ seg: UIStoryboardSegue) {
-    }
-    
-    
-//    @IBAction func bactToLoginVC(_ sender: Any) {
-//        
-//        performSegue(withIdentifier: "showLoginVC", sender: self)
-//    }
 }

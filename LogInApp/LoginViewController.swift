@@ -40,14 +40,18 @@ class ViewController: UIViewController {
     }
 
     @IBAction func correctInput() {
-        if (enterName.text != correctName && enterPassword.text != correctPassword) {
+        if (enterName.text != correctName &&
+            enterPassword.text != correctPassword) {
             showAlert(title: "Wrong input", message: "Try again!")
-            print("Wrong")
             return }
         else {
-            print("Right")
             performSegue(withIdentifier: "showWelcomeVC", sender: nil)
         }
+    }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        enterName.text = nil
+        enterPassword.text = nil
     }
     
     func showAlert(title: String, message: String) {
