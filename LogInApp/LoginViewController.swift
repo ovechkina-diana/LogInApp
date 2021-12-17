@@ -11,16 +11,27 @@ class ViewController: UIViewController {
     @IBOutlet var enterName: UITextField!
     @IBOutlet var enterPassword: UITextField!
     
-    private let correctName = "User"
-    private let correctPassword = "Password"
+    let user = User()
+    let person = User.getPersonInformation()
+
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let welcomeName = segue.destination as! WelcomeViewController
-        welcomeName.rightName = correctName
+        let tabBarController = segue.destination as! UITabBarController
+        let viewControllers = tabBarController.viewControllers
+        for viewController in viewControllers! {
+            if let welcomeVC = viewController as? WelcomeViewController {
+                let welcomeName = segue.destination as! WelcomeViewController
+                welcomeName.rightName = user.login
+            }
+            else if let navigationVC = viewController as? UINavigationController {
+                let aboutUserVC = navigationVC.topViewController as! informationViewController
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -38,8 +49,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func correctInput() {
-        if (enterName.text != correctName ||
-            enterPassword.text != correctPassword) {
+        if (enterName.text != user.login ||
+            enterPassword.text != user.password) {
 
             showAlert(
                 title: "Invalid login or password",

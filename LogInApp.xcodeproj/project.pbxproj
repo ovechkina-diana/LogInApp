@@ -15,6 +15,7 @@
 		187082E127690BAC002613AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187082DF27690BAC002613AA /* LaunchScreen.storyboard */; };
 		187082EB27691D4A002613AA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187082EA27691D4A002613AA /* WelcomeViewController.swift */; };
 		188DB977276D21590080E45E /* informationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DB976276D21590080E45E /* informationViewController.swift */; };
+		188DB979276D2BF90080E45E /* userInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DB978276D2BF90080E45E /* userInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		187082E227690BAC002613AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		187082EA27691D4A002613AA /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		188DB976276D21590080E45E /* informationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = informationViewController.swift; sourceTree = "<group>"; };
+		188DB978276D2BF90080E45E /* userInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				187082DF27690BAC002613AA /* LaunchScreen.storyboard */,
 				187082E227690BAC002613AA /* Info.plist */,
 				188DB976276D21590080E45E /* informationViewController.swift */,
+				188DB978276D2BF90080E45E /* userInformation.swift */,
 			);
 			path = LogInApp;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				187082D927690BA5002613AA /* LoginViewController.swift in Sources */,
+				188DB979276D2BF90080E45E /* userInformation.swift in Sources */,
 				187082EB27691D4A002613AA /* WelcomeViewController.swift in Sources */,
 				188DB977276D21590080E45E /* informationViewController.swift in Sources */,
 				187082D527690BA5002613AA /* AppDelegate.swift in Sources */,
