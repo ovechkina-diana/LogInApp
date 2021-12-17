@@ -36,7 +36,7 @@
                                         <state key="normal" title="Log In"/>
                                         <connections>
                                             <action selector="correctInput" destination="BYZ-38-t0r" eventType="touchUpInside" id="sFG-Ic-TPr"/>
-                                            <segue destination="Bd7-A9-q5v" kind="show" identifier="showWelcomeVC" id="JPD-yG-0CE"/>
+                                            <segue destination="zeM-8X-wIY" kind="show" identifier="showWelcomeVC" id="JPD-yG-0CE"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zq3-qy-WRD">
@@ -97,7 +97,7 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="77.678571428571431"/>
         </scene>
-        <!--Welcome View Controller-->
+        <!--Item-->
         <scene sceneID="FhV-wP-nxC">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Bd7-A9-q5v" customClass="WelcomeViewController" customModule="LogInApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -137,6 +137,7 @@
                             <constraint firstItem="lsz-vN-WRo" firstAttribute="centerX" secondItem="JcB-gm-0a8" secondAttribute="centerX" id="iGS-wX-iUr"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="NbP-lL-hTN"/>
                     <navigationItem key="navigationItem" id="Snj-oC-Gzc"/>
                     <connections>
                         <outlet property="helloLabel" destination="MLC-2J-J9b" id="CZg-UU-xJT"/>
@@ -145,7 +146,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3W-Xb-7z3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Yxm-ou-HYS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
+            <point key="canvasLocation" x="745" y="805"/>
+        </scene>
+        <!--Information View Controller-->
+        <scene sceneID="Hfq-fS-XiE">
+            <objects>
+                <viewController id="Be3-l0-RrJ" customClass="informationViewController" customModule="LogInApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="65B-dZ-NXr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="oBY-CK-nyx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6OV-Hk-yny"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kaz-cx-Ax1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2468.1159420289855" y="77.678571428571431"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Ret-Sz-xT2">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zeM-8X-wIY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="8wB-80-I7O"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fyP-2N-Slh">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Bd7-A9-q5v" kind="relationship" relationship="viewControllers" id="hgl-o2-XVy"/>
+                        <segue destination="e61-mJ-eGA" kind="relationship" relationship="viewControllers" id="SDf-FS-cSo"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iLP-Oc-7sS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="744.92753623188412" y="77.678571428571431"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="VH2-SA-DD4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e61-mJ-eGA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="awS-3D-vqa"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sw5-G5-hBX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Be3-l0-RrJ" kind="relationship" relationship="rootViewController" id="B8e-Lp-KdU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nLx-va-Rcv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1557.9710144927537" y="77.678571428571431"/>
         </scene>
     </scenes>
     <resources>

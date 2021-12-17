@@ -11,8 +11,8 @@ class ViewController: UIViewController {
     @IBOutlet var enterName: UITextField!
     @IBOutlet var enterPassword: UITextField!
     
-    var correctName = "User"
-    var correctPassword = "Password"
+    private let correctName = "User"
+    private let correctPassword = "Password"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +24,8 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (touches.first) != nil {
-            view.endEditing(true)
-        }
-        super .touchesBegan(touches, with: event)
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
 
     @IBAction func forgotName() {
@@ -42,19 +40,12 @@ class ViewController: UIViewController {
     @IBAction func correctInput() {
         if (enterName.text != correctName ||
             enterPassword.text != correctPassword) {
-            guard let inputName = enterName.text, !inputName.isEmpty else {
-            showAlert(title: "Wrong input", message: "Please, enter your name")
-                return
-                }
-            guard let inputPassword = enterPassword.text, !inputPassword.isEmpty else {
-            showAlert(title: "Wrong input", message: "Please, enter your password")
-                return
-                }
-            showAlert(title: "Wrong input", message: "Try again!")
+
+            showAlert(
+                title: "Invalid login or password",
+                message: "Please, enter correct login and password",
+                textField: enterPassword)
             return }
-        else {
-            performSegue(withIdentifier: "showWelcomeVC", sender: nil)
-        }
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
@@ -62,12 +53,24 @@ class ViewController: UIViewController {
         enterPassword.text = nil
     }
     
-    func showAlert(title: String, message: String) {
+    private func showAlert(title: String, message: String, textField: UITextField? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            textField?.text = ""
+        }
         alert.addAction(okAction)
         present(alert, animated: true)
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == enterName {
+            enterPassword.becomeFirstResponder()
+        } else {
+            correctInput()
+            performSegue(withIdentifier: "showWelcomeVC", sender: nil)
+        }
+        return true
     }
     
 }
