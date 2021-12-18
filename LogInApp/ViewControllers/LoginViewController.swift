@@ -15,21 +15,15 @@ class ViewController: UIViewController {
     let person = User.getPersonInformation()
 
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let tabBarController = segue.destination as! UITabBarController
         let viewControllers = tabBarController.viewControllers
         for viewController in viewControllers! {
             if let welcomeVC = viewController as? WelcomeViewController {
-                let welcomeName = segue.destination as! WelcomeViewController
-                welcomeName.rightName = user.login
+                welcomeVC.rightName = person.name
             }
             else if let navigationVC = viewController as? UINavigationController {
-                let aboutUserVC = navigationVC.topViewController as! informationViewController
+                let _ = navigationVC.topViewController as! informationViewController
             }
         }
     }
@@ -51,12 +45,11 @@ class ViewController: UIViewController {
     @IBAction func correctInput() {
         if (enterName.text != user.login ||
             enterPassword.text != user.password) {
-
             showAlert(
                 title: "Invalid login or password",
                 message: "Please, enter correct login and password",
                 textField: enterPassword)
-            return }
+            return}
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
@@ -71,11 +64,10 @@ class ViewController: UIViewController {
         }
         alert.addAction(okAction)
         present(alert, animated: true)
-        
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == enterName {
+    func textFieldShoulReturn(_ textfield: UITextField) -> Bool {
+        if textfield == enterName {
             enterPassword.becomeFirstResponder()
         } else {
             correctInput()
