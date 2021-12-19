@@ -11,11 +11,10 @@ class moreInformationViewController: UIViewController {
 
     @IBOutlet var informationLabel: UILabel!
     
-    let person = User.getPersonInformation()
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        informationLabel.text = "Hello!\nThere are some information about me🙃\n My name is \(person.name), I'm \(person.age).\n \(person.info)"
+        informationLabel.text = "Hello!\nThere are some information about me🙃\n My name is \(user.person.name), I'm \(user.person.age).\n \(user.person.info)"
     }
-
 }

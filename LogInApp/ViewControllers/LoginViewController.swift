@@ -11,19 +11,24 @@ class ViewController: UIViewController {
     @IBOutlet var enterName: UITextField!
     @IBOutlet var enterPassword: UITextField!
     
-    let user = User()
-    let person = User.getPersonInformation()
-
+    let user = User.getUserInformation()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        enterName.delegate = self
+        enterPassword.delegate = self
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let tabBarController = segue.destination as! UITabBarController
-        let viewControllers = tabBarController.viewControllers
-        for viewController in viewControllers! {
+        guard let viewControllers = tabBarController.viewControllers else {return}
+        for viewController in viewControllers {
             if let welcomeVC = viewController as? WelcomeViewController {
-                welcomeVC.rightName = person.name
+                welcomeVC.rightName = user.person.name
             }
             else if let navigationVC = viewController as? UINavigationController {
-                let _ = navigationVC.topViewController as! informationViewController
+                let informationVC = navigationVC.topViewController as! informationViewController
+                informationVC.user = user
             }
         }
     }
@@ -66,15 +71,18 @@ class ViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func textFieldShoulReturn(_ textfield: UITextField) -> Bool {
-        if textfield == enterName {
-            enterPassword.becomeFirstResponder()
-        } else {
-            correctInput()
-            performSegue(withIdentifier: "showWelcomeVC", sender: nil)
-        }
-        return true
-    }
+    
     
 }
 
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textfield: UITextField) -> Bool {
+            if textfield == enterName {
+                enterPassword.becomeFirstResponder()
+            } else {
+                correctInput()
+                performSegue(withIdentifier: "showWelcomeVC", sender: nil)
+            }
+            return true
+        }
+}
